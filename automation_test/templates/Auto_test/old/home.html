@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block main %}
+<nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+					 <li>
+                        <a href="#"><i class="fa fa-sitemap"></i>项目列表<span class="fa arrow"></span></a>
+                        <input type="hidden" value="{{home}}">
+                        <ul class="nav nav-second-level">
+                            {% for i in Projects %}
+                             <li>
+								<a href="module/{{i.id}}" class="active-menu"><i class="fa fa-table"></i>{{i}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                     </li>
+
+                </ul>
+            </div>
+
+</nav>
+
+
+{% endblock main %}

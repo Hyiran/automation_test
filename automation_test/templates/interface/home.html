@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block main %}
+
+                    <li class="xn-openable">
+                        <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">项目列表</span></a>
+                        <ul>
+                             {% for i in Projects %}
+                             <li>
+								<a href="module/{{i.project_id}}" class="active-menu"><i class="fa fa-table"></i>{{i}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+
+                    </li>
+
+                    <li class="xn-openable">
+                         <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">用例库</span></a>
+                    </li>
+
+{% endblock main %}

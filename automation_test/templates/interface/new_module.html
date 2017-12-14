@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block table %}
+<div id="page-inner">
+				<div class="row">
+					<div class="col-md-12">
+						<!-- Advanced Tables -->
+						<div class="panel panel-default">
+							<div class="panel-heading">新建接口测试模块
+							</div>
+							<form action="commit/" method="post">
+							{% csrf_token %}
+
+							            <div class="form-group">
+                                            <label >测试模块名</label>
+                                            <input type="text" name="module_name" placeholder="Enter module name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>所属项目</label>
+                                            <input type="text" name="project_name" placeholder="project">
+                                        </div>
+                                 <button type="submit" class="btn btn-primary">提交</button>
+							</form>
+						</div>
+						<!--End Advanced Tables -->
+					</div>
+				</div>
+			</div>
+{% endblock table %}

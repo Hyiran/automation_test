@@ -1,0 +1,462 @@
+{% extends 'base.html' %}
+{% block table %}
+<div id="page-inner">
+				<div class="row">
+					<div class="col-md-12">
+						<!-- Advanced Tables -->
+						<div class="panel panel-default">
+                            <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>用例编号</th>
+                                            <th>用例主题</th>
+                                            <th>请求类型</th>
+                                            <th>主机名</th>
+                                            <th>url</th>
+                                            <th>报文头</th>
+                                            <th>数据</th>
+                                            <th>响应时间</th>
+                                            <th>期待值</th>
+                                            <th>创建时间</th>
+                                            <th>操&nbsp;  &nbsp;  &nbsp;  作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {%if testcases%}
+                                            {%for i in testcases%}
+                                            <tr class="odd gradeX">
+                                                <td>{{i.test_id}}</td>
+                                                <td>{{i.test_object}}</td>
+                                                <td class="center"><a  href="#">{{i.mothod}}</a></td>
+                                                <td class="center"><a  href="#">{{i.host}}</a></td>
+                                                <td class="center"><a  href="#">{{i.url}}</a></td>
+                                                <td class="center"><a  href="#">详细</a></td>
+                                                <td class="center"><a  href="#">详细</a></td>
+                                                <td class="center"><a  href="#">{{i.timeout}}</a></td>
+                                                <td class="center"><a  href="#">{{i.expected_contents}}</a></td>
+                                                <td class="center">{{i.created_time}}</td>
+                                                <td >
+                                                    <div>
+                                                        <a class="btn btn-primary" data-toggle="modal" data-target="#myModal" href="#">编辑</a>
+                                                           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                               <div class="modal-dialog">
+                                                                   <div class="modal-content">
+                                                                         <form class="form-horizontal">
+                                                                                <div class="panel panel-default">
+                                                                                    <div class="panel-heading">
+                                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                                                                                        <h3 class="panel-title"><strong>用例编辑</strong> 页面</h3>
+
+                                                                                    </div>
+                                                                                    <div class="panel-body">
+
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">用例编号</label>
+                                                                                            <div class="col-md-6 col-xs-12">
+                                                                                                    <div class="input-group">
+                                                                                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                                                                        <input type="text" class="form-control"/>
+                                                                                                    </div>
+                                                                                                    <span class="help-block">用例编号</span>
+                                                                                                </div><br/>
+                                                                                        </div>
+
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">用例主题</label>
+                                                                                                <div class="col-md-6 col-xs-12">
+                                                                                                    <div class="input-group">
+                                                                                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                                                                        <input type="text" class="form-control"/>
+                                                                                                    </div>
+                                                                                                    <span class="help-block">测试点描述</span>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">请求类型</label>
+                                                                                                <div class="col-md-6 col-xs-12">
+                                                                                                    <div class="input-group">
+                                                                                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                                                                        <input type="text" class="form-control"/>
+                                                                                                    </div>
+                                                                                                    <span class="help-block">http请求方法（post/get）</span>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">主机名</label>
+                                                                                                <div class="col-md-6 col-xs-12">
+                                                                                                    <div class="input-group">
+                                                                                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                                                                        <input type="text" class="form-control"/>
+                                                                                                    </div>
+                                                                                                    <span class="help-block">主机名</span>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">url</label>
+                                                                                                <div class="col-md-6 col-xs-12">
+                                                                                                    <div class="input-group">
+                                                                                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                                                                        <input type="text" class="form-control"/>
+                                                                                                    </div>
+                                                                                                    <span class="help-block">url</span>
+                                                                                                </div>
+
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">报文头</label>
+                                                                                                <div class="col-md-6 col-xs-12">
+                                                                                                    <div class="input-group">
+                                                                                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                                                                        <input type="text" class="form-control"/>
+                                                                                                    </div>
+                                                                                                    <span class="help-block">headers</span>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">数据</label>
+                                                                                            <div class="col-md-6 col-xs-12">
+                                                                                               <textarea class="form-control" rows="5"></textarea>
+                                                                                               <span class="help-block">传入数据</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">响应时间</label>
+                                                                                                <div class="col-md-6 col-xs-12">
+                                                                                                    <div class="input-group">
+                                                                                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                                                                        <input type="text" class="form-control"/>
+                                                                                                    </div>
+                                                                                                    <span class="help-block">响应时间</span>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">期待结果</label>
+                                                                                                <div class="col-md-6 col-xs-12">
+                                                                                                    <div class="input-group">
+                                                                                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                                                                        <input type="text" class="form-control"/>
+                                                                                                    </div>
+                                                                                                    <span class="help-block">期待结果</span>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                        <!--<div class="form-group">-->
+                                                                                            <!--<label class="col-md-3 col-xs-12 control-label">Password</label>-->
+                                                                                            <!--<div class="col-md-6 col-xs-12">-->
+                                                                                                <!--<div class="input-group">-->
+                                                                                                    <!--<span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>-->
+                                                                                                    <!--<input type="password" class="form-control"/>-->
+                                                                                                <!--</div>-->
+                                                                                                <!--<span class="help-block">Password field sample</span>-->
+                                                                                            <!--</div>-->
+                                                                                        <!--</div>-->
+
+                                                                                        <!--<div class="form-group">-->
+                                                                                            <!--<label class="col-md-3 col-xs-12 control-label">Datepicker</label>-->
+                                                                                            <!--<div class="col-md-6 col-xs-12">-->
+                                                                                                <!--<div class="input-group">-->
+                                                                                                    <!--<span class="input-group-addon"><span class="fa fa-calendar"></span></span>-->
+                                                                                                    <!--<input type="text" class="form-control datepicker" value="2014-11-01">-->
+                                                                                                <!--</div>-->
+                                                                                                <!--<span class="help-block">Click on input field to get datepicker</span>-->
+                                                                                            <!--</div>-->
+                                                                                        <!--</div>-->
+
+                                                                                        <!--<div class="form-group">-->
+                                                                                            <!--<label class="col-md-3 col-xs-12 control-label">Textarea</label>-->
+                                                                                            <!--<div class="col-md-6 col-xs-12">-->
+                                                                                                <!--<textarea class="form-control" rows="5"></textarea>-->
+                                                                                                <!--<span class="help-block">Default textarea field</span>-->
+                                                                                            <!--</div>-->
+                                                                                        <!--</div>-->
+
+                                                                                        <!--<div class="form-group">-->
+                                                                                            <!--<label class="col-md-3 col-xs-12 control-label">Tags</label>-->
+                                                                                            <!--<div class="col-md-6 col-xs-12">-->
+                                                                                                <!--<input type="text" class="tagsinput" value="First,Second,Third"/>-->
+                                                                                                <!--<span class="help-block">Default textarea field</span>-->
+                                                                                            <!--</div>-->
+                                                                                        <!--</div>-->
+
+                                                                                        <!--<div class="form-group">-->
+                                                                                            <!--<label class="col-md-3 col-xs-12 control-label">Select</label>-->
+                                                                                            <!--<div class="col-md-6 col-xs-12">-->
+                                                                                                <!--<select class="form-control select">-->
+                                                                                                    <!--<option>Option 1</option>-->
+                                                                                                    <!--<option>Option 2</option>-->
+                                                                                                    <!--<option>Option 3</option>-->
+                                                                                                    <!--<option>Option 4</option>-->
+                                                                                                    <!--<option>Option 5</option>-->
+                                                                                                <!--</select>-->
+                                                                                                <!--<span class="help-block">Select box example</span>-->
+                                                                                            <!--</div>-->
+                                                                                        <!--</div>-->
+
+                                                                                        <!--<div class="form-group">-->
+                                                                                            <!--<label class="col-md-3 col-xs-12 control-label">File</label>-->
+                                                                                            <!--<div class="col-md-6 col-xs-12">-->
+                                                                                                <!--<input type="file" class="fileinput btn-primary" name="filename" id="filename" title="Browse file"/>-->
+                                                                                                <!--<span class="help-block">Input type file</span>-->
+                                                                                            <!--</div>-->
+                                                                                        <!--</div>-->
+
+                                                                                        <!--<div class="form-group">-->
+                                                                                            <!--<label class="col-md-3 col-xs-12 control-label">Checkbox</label>-->
+                                                                                            <!--<div class="col-md-6 col-xs-12">-->
+                                                                                                <!--<label class="check"><input type="checkbox" class="icheckbox" checked="checked"/> Checkbox title</label>-->
+                                                                                                <!--<span class="help-block">Checkbox sample, easy to use</span>-->
+                                                                                            <!--</div>-->
+                                                                                        <!--</div>-->
+
+                                                                                    </div>
+                                                                                       <div class="modal-footer">
+                                                                                           <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                                                           <button type="button" class="btn btn-primary">保存</button>
+                                                                                       </div>
+                                                                                </div>
+                                                                                </form>
+                                                                   </div>
+                                                               </div>
+                                                           </div>
+                                                        <a class="btn btn-success" href="#">运行</a>
+                                                        <a class="btn btn-danger" href="#">删除</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {%endfor%}
+
+                                    {%else%}
+
+                                        <tr class="odd gradeX">
+                                            <td class="center" colspan="10">暂无用例</td>
+                                            <td >
+                                                    <div>
+                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#myModal" href="#">新建</a>
+                                                           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                               <div class="modal-dialog">
+                                                                   <div class="modal-content">
+                                                                       <div class="modal-header">
+                                                                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                           <h4 class="modal-title" id="myModalLabel">用例新建页面</h4>
+                                                                       </div>
+                                                                       <div class="modal-body">
+                                                                            新建一条用例
+                                                                       </div>
+                                                                       <div class="modal-footer">
+                                                                           <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                                           <button type="button" class="btn btn-primary">保存</button>
+                                                                       </div>
+                                                                   </div>
+                                                               </div>
+                                                           </div>
+                                                        </div>
+                                            </td>
+                                        </tr>
+                                    {%endif%}
+                                    </tbody>
+                                </table>
+
+							    <table data-show-toggle="true" data-maintain-selected="true" data-card-view="true" data-show-refresh="true" class="table table-striped">
+                                    <thead>　　　　　　　　　　　　　　　
+                                        <tr>
+                                            <th>用例编号</th>
+                                            <th>用例主题</th>
+                                            <th>请求类型</th>
+                                            <th>主机名</th>
+                                            <th>url</th>
+                                            <th>报文头</th>
+                                            <th>数据</th>
+                                            <th>响应时间</th>
+                                            <th>期待值</th>
+                                            <th>创建时间</th>
+                                            <th>操&nbsp;  &nbsp;  &nbsp;  作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>　　　　　　　　　　　　　　
+                                            <!--<tr>-->
+                                                <!--<td>{{ customer.id }}</td>　　-->
+                                                <!--<td>{{ customer.qq }}</td>-->
+                                                <!--<td>{{ customer.name }}</td>-->
+                                                <!--<td>{{ customer.source }}</td>-->
+                                                <!--<td>{{ customer.course }}</td>-->
+                                                <!--<td>{{ customer.get_class_type_display }}</td>-->
+                                                <!--&lt;!&ndash;＃get_class_type_display 显示中文&ndash;&gt;-->
+                                                <!--<td>{{ customer.customer_note|truncatechars:30}}</td>　　　-->
+                                                <!--&lt;!&ndash;＃｜truncatechars:30 默认在页面只显示30个字节&ndash;&gt;-->
+                                                <!--<td class="{{ customer.status }}">{{ customer.get_status_display }}</td>-->
+                                                <!--&lt;!&ndash;＃根据不同的状态，添加底色样式，css样式在customers.css中定义&ndash;&gt;-->
+                                                <!--<td>{{ customer.consultant}}</td>-->
+                                                <!--<td>{{ customer.date }}</td>-->
+                                            <!--</tr>-->
+                                         {%for i in testcases%}
+                                            <tr class="odd gradeX">
+                                                <td>{{i.test_id}}</td>
+                                                <td>{{i.test_object}}</td>
+                                                <td class="center"><a  href="#">{{i.mothod}}</a></td>
+                                                <td class="center"><a  href="#">{{i.host}}</a></td>
+                                                <td class="center"><a  href="#">{{i.url}}</a></td>
+                                                <td class="center"><a  href="#">详细</a></td>
+                                                <td class="center"><a  href="#">详细</a></td>
+                                                <td class="center"><a  href="#">{{i.timeout}}</a></td>
+                                                <td class="center"><a  href="#">{{i.expected_contents}}</a></td>
+                                                <td class="center">{{i.created_time}}</td>
+                                                <td >
+                                                    <div>
+                                                        <a class="btn btn-primary" data-toggle="modal" data-target="#myModal" href="#">编辑</a>
+                                                           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                               <div class="modal-dialog">
+                                                                   <div class="modal-content">
+                                                                       <div class="modal-header">
+                                                                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                           <h4 class="modal-title" id="myModalLabel">用例编辑页面</h4>
+                                                                       </div>
+                                                                       <div class="modal-body">
+                                                                        编辑一条用例
+                                                                           <form class="form-horizontal">
+                                                                                <div class="panel panel-default">
+                                                                                    <div class="panel-heading">
+                                                                                        <h3 class="panel-title"><strong>One Column</strong> Layout</h3>
+                                                                                        <ul class="panel-controls">
+                                                                                            <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                    <div class="panel-body">
+                                                                                        <p>This is non libero bibendum, scelerisque arcu id, placerat nunc. Integer ullamcorper rutrum dui eget porta. Fusce enim dui, pulvinar a augue nec, dapibus hendrerit mauris. Praesent efficitur, elit non convallis faucibus, enim sapien suscipit mi, sit amet fringilla felis arcu id sem. Phasellus semper felis in odio convallis, et venenatis nisl posuere. Morbi non aliquet magna, a consectetur risus. Vivamus quis tellus eros. Nulla sagittis nisi sit amet orci consectetur laoreet. Vivamus volutpat erat ac vulputate laoreet. Phasellus eu ipsum massa.</p>
+                                                                                    </div>
+                                                                                    <div class="panel-body">
+
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">Text Field</label>
+                                                                                            <div class="col-md-6 col-xs-12">
+                                                                                                <div class="input-group">
+                                                                                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                                                                    <input type="text" class="form-control"/>
+                                                                                                </div>
+                                                                                                <span class="help-block">This is sample of text field</span>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">Password</label>
+                                                                                            <div class="col-md-6 col-xs-12">
+                                                                                                <div class="input-group">
+                                                                                                    <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
+                                                                                                    <input type="password" class="form-control"/>
+                                                                                                </div>
+                                                                                                <span class="help-block">Password field sample</span>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">Datepicker</label>
+                                                                                            <div class="col-md-6 col-xs-12">
+                                                                                                <div class="input-group">
+                                                                                                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                                                                                    <input type="text" class="form-control datepicker" value="2014-11-01">
+                                                                                                </div>
+                                                                                                <span class="help-block">Click on input field to get datepicker</span>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">Textarea</label>
+                                                                                            <div class="col-md-6 col-xs-12">
+                                                                                                <textarea class="form-control" rows="5"></textarea>
+                                                                                                <span class="help-block">Default textarea field</span>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">Tags</label>
+                                                                                            <div class="col-md-6 col-xs-12">
+                                                                                                <input type="text" class="tagsinput" value="First,Second,Third"/>
+                                                                                                <span class="help-block">Default textarea field</span>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">Select</label>
+                                                                                            <div class="col-md-6 col-xs-12">
+                                                                                                <select class="form-control select">
+                                                                                                    <option>Option 1</option>
+                                                                                                    <option>Option 2</option>
+                                                                                                    <option>Option 3</option>
+                                                                                                    <option>Option 4</option>
+                                                                                                    <option>Option 5</option>
+                                                                                                </select>
+                                                                                                <span class="help-block">Select box example</span>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">File</label>
+                                                                                            <div class="col-md-6 col-xs-12">
+                                                                                                <input type="file" class="fileinput btn-primary" name="filename" id="filename" title="Browse file"/>
+                                                                                                <span class="help-block">Input type file</span>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 col-xs-12 control-label">Checkbox</label>
+                                                                                            <div class="col-md-6 col-xs-12">
+                                                                                                <label class="check"><input type="checkbox" class="icheckbox" checked="checked"/> Checkbox title</label>
+                                                                                                <span class="help-block">Checkbox sample, easy to use</span>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                    <div class="panel-footer">
+                                                                                        <button class="btn btn-default">Clear Form</button>
+                                                                                        <button class="btn btn-primary pull-right">Submit</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                </form>
+                                                                       </div>
+                                                                       <div class="modal-footer">
+                                                                           <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                                           <button type="button" class="btn btn-primary">保存</button>
+                                                                       </div>
+                                                                   </div>
+                                                               </div>
+                                                           </div>
+                                                        <a class="btn btn-success" href="#">运行</a>
+                                                        <a class="btn btn-danger" href="#">删除</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                         {%endfor%}
+                                    </tbody>
+                                 </table>
+                            </div>
+                        </div>
+
+							<!--<form action="" method="post">-->
+							<!--{% csrf_token %}-->
+							<!--<div class="panel-body">-->
+								<!--<div align="right">-->
+											<!--<button formaction="module_new/" class="btn btn-default"><i class=" fa fa-refresh "></i> 新建</button>-->
+											<!--<button formaction="module_modify/" class="btn btn-primary"><i class="fa fa-edit "></i> 运行全部</button>-->
+											<!--<button formaction="module_delete/" onclick="return confirm('你确认要删除所选项吗?')" type="submit" class="btn btn-danger"><i class="fa fa-pencil"></i> 删除</button>-->
+								<!--</div>-->
+								<!--<div class="table-responsive">-->
+									<!--<div class="panel-body">-->
+							<!--{%for i in m_list%}-->
+											<!--<div class="checkbox3 checkbox-success checkbox-inline checkbox-check checkbox-round  checkbox-light">-->
+                                        	    <!--<input type="checkbox" value = "{{i.module_name}}" id="checkbox-fa-light-2" name="check_box_list">-->
+                                        	    <!--<label for="checkbox-fa-light-2">-->
+                                        	      <!--<a href="module={{i.module_name}}" class="btn btn-primary">{{i.module_name}}</a>-->
+                                        	    <!--</label>-->
+											<!--</div> <br/>-->
+							<!--{%endfor%}-->
+									<!--</div>-->
+									<!--</div>-->
+							<!--</div>-->
+							<!--</form>-->
+						</div>
+						<!--End Advanced Tables -->
+					</div>
+				</div>
+			</div>
+{% endblock table %}

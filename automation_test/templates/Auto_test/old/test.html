@@ -1,0 +1,122 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta content="" name="description" />
+    <meta content="webthemez" name="author" />
+    <title>接口自动化管理平台</title>
+	<!-- Bootstrap Styles-->
+    <link href="{% static 'Auto_test/css/bootstrap.css' %}" rel="stylesheet" />
+     <!-- FontAwesome Styles-->
+    <link href="{% static 'Auto_test/css/font-awesome.css' %}" rel="stylesheet" />
+     <!-- Morris Chart Styles-->
+
+        <!-- Custom Styles-->
+    <link href="{% static 'Auto_test/css/custom-styles.css' %}" rel="stylesheet" />
+     <!-- Google Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+     <!-- TABLE STYLES-->
+    <link href="{% static 'Auto_test/js/dataTables/dataTables.bootstrap.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'Auto_test/jqconfirm/jquery.confirm/jquery.confirm.css" />
+
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand"><strong><i class="icon fa fa-plane"></i>接口自动化平台</strong></a>
+				<div id="sideNav" href="">
+		<i class="fa fa-bars icon"></i>
+		</div>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i>用户信息</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>设置</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i>退出</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+        </nav>
+
+        {%block main%}
+        {%endblock main%}
+
+        <div id="page-wrapper" >
+		  <div class="header">
+                        <h1 class="page-header">
+                            {{title}} <small>interface test</small>
+                        </h1>
+						<ol class="breadcrumb">
+					        <li><a href="backhome">Home</a></li>
+                            {%if project_name%}
+                            <li><a href="backproj">{{project_name}}</a></li>
+					        <li><a >{{module_name}}</a></li>
+                            {%endif%}
+					    </ol>
+
+		    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="panel panel-default chartJs">
+                                <div class="panel-heading">
+                                    <div class="card-title">
+                                        <div class="title">Pie & Doughnut Chart</div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <canvas id="pie-chart" class="chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+			<!--<div><img src="{% static 'Auto_test/img/222.png' %}" alt="接口测试" /></div>-->
+         {%block table%}
+         {%endblock table%}
+
+          <footer><p>Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://www.baidu.com/">Auto_Test</a></p></footer>
+        </div>
+             <!-- /. PAGE INNER  -->
+    </div>
+         <!-- /. PAGE WRAPPER  -->
+     <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="{% static 'Auto_test/js/jquery-1.10.2.js' %}"></script>
+      <!-- Bootstrap Js -->
+    <script src="{% static 'Auto_test/js/bootstrap.min.js' %}"></script>
+    <!-- Metis Menu Js -->
+    <script src="{% static 'Auto_test/js/jquery.metisMenu.js' %}"></script>
+     <!-- DATA TABLE SCRIPTS -->
+    <script src="{% static 'Auto_test/js/dataTables/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'Auto_test/js/dataTables/dataTables.bootstrap.js' %}"></script>
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
+    </script>
+         <!-- Custom Js -->
+    <script src="{% static 'Auto_test/js/custom-scripts.js' %}"></script>
+
+</body>
+</html>

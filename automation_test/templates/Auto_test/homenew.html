@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block main %}
+
+					 <li>
+                        <a href="#"><i class="fa fa-sitemap"></i>项目列表<span class="fa arrow"></span></a>
+                        <input type="hidden" value="{{home}}">
+                        <ul class="nav nav-second-level">
+                            {% for i in Projects %}
+                             <li>
+								<a href="module/{{i.id}}" class="active-menu"><span class="fa fa-image"></span>{{i}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                     </li>
+
+{% endblock main %}
